@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caves of Callisto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="header">
+            <h1>Caves of Callisto</h1>
+            <div id="game-info">
+                <span id="level">Level: 1</span>
+                <span id="health">HP: 100/100</span>
+                <span id="score">Score: 0</span>
+            </div>
+        </div>
+        
+        <div id="game-area">
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+            
+            <div id="ui-panel">
+                <div id="controls">
+                    <h3>Controls</h3>
+                    <div class="control-group">
+                        <button id="move-up">↑</button>
+                        <div class="horizontal-controls">
+                            <button id="move-left">←</button>
+                            <button id="move-down">↓</button>
+                            <button id="move-right">→</button>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="attack">Attack</button>
+                        <button id="wait">Wait</button>
+                        <button id="use-item">Use Item</button>
+                    </div>
+                </div>
+                
+                <div id="inventory">
+                    <h3>Inventory</h3>
+                    <div id="inventory-items"></div>
+                </div>
+                
+                <div id="log">
+                    <h3>Game Log</h3>
+                    <div id="log-messages"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="game-over" class="hidden">
+            <div class="modal">
+                <h2>Game Over</h2>
+                <p>Your expedition to Callisto has ended.</p>
+                <p>Final Score: <span id="final-score">0</span></p>
+                <button id="restart">Start New Game</button>
+            </div>
+        </div>
+        
+        <div id="start-screen">
+            <div class="modal">
+                <h1>Caves of Callisto</h1>
+                <p>Explore the ancient alien ruins beneath Jupiter's moon.</p>
+                <p>A 2D sci-fi roguelike adventure</p>
+                <div class="class-selection">
+                    <h3>Choose Your Class:</h3>
+                    <div class="class-options">
+                        <button class="class-btn" data-class="scout">Scout</button>
+                        <button class="class-btn" data-class="soldier">Soldier</button>
+                        <button class="class-btn" data-class="scientist">Scientist</button>
+                    </div>
+                </div>
+                <button id="start-game" disabled>Start Game</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
