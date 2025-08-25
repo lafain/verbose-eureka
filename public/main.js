@@ -1,0 +1,2 @@
+/* DEPRECATED: main.js replaced by modular files (utils.js, cameraControls.js, touchControls.js, ui.js, cities.js, gameInit.js, bootstrap.js).
+   This file remains for reference and should not be loaded. */

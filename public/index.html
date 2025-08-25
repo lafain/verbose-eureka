@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <title>FAILURE_TO_DIE - Level 1 Prototype</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/admin.css">
+  <link rel="stylesheet" href="/menu.css">
+</head>
+<body>
+  <!-- Orientation message for portrait mode -->
+  <div id="orientationMessage" style="display: none;">
+    <div class="rotate-icon">📱</div>
+    <h2>Please Keep Horizontal</h2>
+    <p>Rotate your phone to landscape mode</p>
+    <p style="font-size: 0.9em; margin-top: 10px;">FAILURE_TO_DIE requires landscape orientation</p>
+    <div class="rotate-animation">↻</div>
+  </div>
+
+  <!-- Standardized game area container -->
+  <div id="gameArea">
+    <!-- HUD -->
+    <div id="hud">
+      <div class="bar" id="integrity"><div class="fill" id="integrityBar"></div></div>
+      <div class="bar" id="charge"><div class="fill" id="chargeBar"></div></div>
+      <!-- Compass will be created by JavaScript -->
+    </div>
+
+    <!-- Mobile touch controls -->
+    <div id="touchControls" class="touch-only">
+      <div id="leftCircle" class="touchCircle">
+        <div class="touchCenter"></div>
+      </div>
+      <!-- Right side mobile buttons -->
+      <div id="mobileRightButtons" class="mobile-button-group">
+        <!-- Camera rotation buttons -->
+        <button id="rotateCamLeft" class="mobileBtn" title="Rotate camera left">↶</button>
+        <button id="rotateCamRight" class="mobileBtn" title="Rotate camera right">↷</button>
+        <!-- Action buttons -->
+        <button id="btnSprint" class="mobileBtn mobileBtn--sprint" title="Sprint">⚡</button>
+        <button id="btnAction" class="mobileBtn mobileBtn--primary" title="Action">F</button>
+        <button id="btnBuild" class="mobileBtn mobileBtn--accent" title="Build">🔨</button>
+        <button id="btnMenu" class="mobileBtn" title="Menu">☰</button>
+      </div>
+    </div>
+
+    <!-- Debug export button -->
+    <button id="debugExportBtn" title="Export debug console to file">📋</button>
+    
+    <!-- Fullscreen button -->
+    <button id="fullscreenBtn" title="Enter fullscreen mode">⛶</button>
+
+  </div>
+
+  <!-- Build info - moved outside game area to always be visible -->
+  <div id="buildInfo">
+    <button id="buildTime" title="Click to hard refresh">loading...</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/mrdoob/three.js@r149/examples/js/utils/BufferGeometryUtils.js"></script>
+  <script src="/utils.js?v=1"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  
+  <!-- Core systems -->
+  <script src="/terrain.js?v=1"></script>
+  <script src="/playerController.js?v=1"></script>
+  <script src="/chunk.js?v=7"></script>
+  
+  <!-- Combat system -->
+  <script src="/combat.js?v=7"></script>
+  
+  <!-- Game systems -->
+  <script src="/menu.js?v=1"></script>
+  <script src="/cameraControls.js?v=1"></script>
+  <script src="/touchControls.js?v=1"></script>
+  <script src="/networking.js?v=1"></script>
+  <script src="/maps.js?v=1"></script>
+  <script src="/cities.js?v=2"></script>
+  <script src="/portals.js?v=1"></script>
+  <script src="/citizens.js?v=1"></script>
+  <script src="/resources.js?v=1"></script>
+  <script src="/plants.js?v=1"></script>
+  <script src="/ui.js?v=1"></script>
+  <script src="/gameInit.js?v=1"></script>
+  <script src="/bootstrap.js?v=1"></script>
+</body>
+</html> 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FTD Admin</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="container">
+    <h2>FAILURE_TO_DIE – Admin Panel</h2>
+    <label>Seed: <input type="number" id="seed"></label>
+    <label>Flatness (0-1): <input type="number" id="flat" step="0.1" min="0" max="1"></label>
+    <label>Slope Length (hexes): <input type="number" id="slope" min="1" max="20"></label>
+    <label>Border Height (max): <input type="number" id="border" min="0" max="10"></label>
+    <label>Map Radius (hexes): <input type="number" id="radius" min="5"></label>
+    <label>Base Freq: <input type="number" id="base" step="0.01"></label>
+    <label>Warp Freq: <input type="number" id="warp" step="0.01"></label>
+    <label>Warp Amp: <input type="number" id="amp" step="0.1"></label>
+    <label>Follow Radius: <input type="number" id="follow" step="0.1"></label>
+    <label style="display:flex;align-items:center;justify-content:center;gap:6px;">Outline Mode <input type="checkbox" id="outline"></label>
+    <button id="regenerate">Regenerate Map</button>
+    <hr>
+    <h3>Map Server Configuration</h3>
+    <div id="mapServers">
+      <div class="mapServerRow"><label>map1 URL: <input type="text" data-map="map1" placeholder="http://localhost:3000"></label></div>
+      <div class="mapServerRow"><label>map2 URL: <input type="text" data-map="map2" placeholder="http://192.168.1.20:3001"></label></div>
+      <div class="mapServerRow"><label>map3 URL: <input type="text" data-map="map3" placeholder="http://192.168.1.21:3002"></label></div>
+      <div class="mapServerRow"><label>map4 URL: <input type="text" data-map="map4" placeholder="http://192.168.1.22:3003"></label></div>
+      <div class="mapServerRow"><label>map5 URL: <input type="text" data-map="map5" placeholder="http://192.168.1.23:3004"></label></div>
+      <div class="mapServerRow"><label>map6 URL: <input type="text" data-map="map6" placeholder="http://192.168.1.24:3005"></label></div>
+      <button id="saveMapServers">Save Map Servers</button>
+    </div>
+    <hr>
+    <button id="back">Return to Game</button>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html> 

@@ -1,0 +1,1548 @@
+{
+  "buildings": [],
+  "tileRaises": {},
+  "plants": [
+    {
+      "id": 1,
+      "type": "bladePatch",
+      "x": 97,
+      "z": -651,
+      "alive": true
+    },
+    {
+      "id": 2,
+      "type": "bladePatch",
+      "x": -564,
+      "z": 133,
+      "alive": true
+    },
+    {
+      "id": 3,
+      "type": "mushroomTree",
+      "x": -647,
+      "z": -1095,
+      "alive": true
+    },
+    {
+      "id": 4,
+      "type": "spikePine",
+      "x": -599,
+      "z": -1127,
+      "alive": true
+    },
+    {
+      "id": 5,
+      "type": "spikePine",
+      "x": 93,
+      "z": 511,
+      "alive": true
+    },
+    {
+      "id": 6,
+      "type": "crystalTwig",
+      "x": 1006,
+      "z": 895,
+      "alive": true
+    },
+    {
+      "id": 7,
+      "type": "fanGrass",
+      "x": -790,
+      "z": -1390,
+      "alive": true
+    },
+    {
+      "id": 8,
+      "type": "fanGrass",
+      "x": -841,
+      "z": 407,
+      "alive": true
+    },
+    {
+      "id": 9,
+      "type": "crystalTwig",
+      "x": 1271,
+      "z": 1107,
+      "alive": true
+    },
+    {
+      "id": 10,
+      "type": "fanGrass",
+      "x": -566,
+      "z": -457,
+      "alive": true
+    },
+    {
+      "id": 11,
+      "type": "mushroomTree",
+      "x": -818,
+      "z": -717,
+      "alive": true
+    },
+    {
+      "id": 12,
+      "type": "stubOak",
+      "x": -789,
+      "z": -443,
+      "alive": true
+    },
+    {
+      "id": 13,
+      "type": "bladePatch",
+      "x": 1518,
+      "z": -699,
+      "alive": true
+    },
+    {
+      "id": 14,
+      "type": "tuftGrass",
+      "x": -819,
+      "z": 1418,
+      "alive": true
+    },
+    {
+      "id": 15,
+      "type": "spikePine",
+      "x": 9,
+      "z": 1108,
+      "alive": true
+    },
+    {
+      "id": 16,
+      "type": "crystalTwig",
+      "x": -284,
+      "z": 845,
+      "alive": true
+    },
+    {
+      "id": 17,
+      "type": "fanPalm",
+      "x": -1325,
+      "z": 1361,
+      "alive": true
+    },
+    {
+      "id": 18,
+      "type": "stubOak",
+      "x": -860,
+      "z": -466,
+      "alive": true
+    },
+    {
+      "id": 19,
+      "type": "bladePatch",
+      "x": -1100,
+      "z": -816,
+      "alive": true
+    },
+    {
+      "id": 20,
+      "type": "fanGrass",
+      "x": -1155,
+      "z": 1312,
+      "alive": true
+    },
+    {
+      "id": 21,
+      "type": "fanPalm",
+      "x": -718,
+      "z": -1384,
+      "alive": true
+    },
+    {
+      "id": 22,
+      "type": "tuftGrass",
+      "x": -282,
+      "z": -781,
+      "alive": true
+    },
+    {
+      "id": 23,
+      "type": "bladePatch",
+      "x": -650,
+      "z": -445,
+      "alive": true
+    },
+    {
+      "id": 24,
+      "type": "tuftGrass",
+      "x": 322,
+      "z": 1104,
+      "alive": true
+    },
+    {
+      "id": 25,
+      "type": "stubOak",
+      "x": -1345,
+      "z": -783,
+      "alive": true
+    },
+    {
+      "id": 26,
+      "type": "spikePine",
+      "x": -465,
+      "z": 352,
+      "alive": true
+    },
+    {
+      "id": 27,
+      "type": "fanGrass",
+      "x": 455,
+      "z": -1055,
+      "alive": true
+    },
+    {
+      "id": 28,
+      "type": "stubOak",
+      "x": 548,
+      "z": -830,
+      "alive": true
+    },
+    {
+      "id": 29,
+      "type": "bladePatch",
+      "x": -43,
+      "z": -957,
+      "alive": true
+    },
+    {
+      "id": 30,
+      "type": "fanPalm",
+      "x": -642,
+      "z": 578,
+      "alive": true
+    },
+    {
+      "id": 31,
+      "type": "bladePatch",
+      "x": -75,
+      "z": 996,
+      "alive": true
+    },
+    {
+      "id": 32,
+      "type": "fanGrass",
+      "x": -1568,
+      "z": 804,
+      "alive": true
+    },
+    {
+      "id": 33,
+      "type": "fanGrass",
+      "x": -594,
+      "z": 1272,
+      "alive": true
+    },
+    {
+      "id": 34,
+      "type": "tuftGrass",
+      "x": -1352,
+      "z": 107,
+      "alive": true
+    },
+    {
+      "id": 35,
+      "type": "bladePatch",
+      "x": -1571,
+      "z": 145,
+      "alive": true
+    },
+    {
+      "id": 36,
+      "type": "fanGrass",
+      "x": 1546,
+      "z": 160,
+      "alive": true
+    },
+    {
+      "id": 37,
+      "type": "tuftGrass",
+      "x": 508,
+      "z": -1404,
+      "alive": true
+    },
+    {
+      "id": 38,
+      "type": "bladePatch",
+      "x": 503,
+      "z": -248,
+      "alive": true
+    },
+    {
+      "id": 39,
+      "type": "stubOak",
+      "x": 174,
+      "z": 932,
+      "alive": true
+    },
+    {
+      "id": 40,
+      "type": "bladePatch",
+      "x": 1485,
+      "z": 188,
+      "alive": true
+    },
+    {
+      "id": 41,
+      "type": "mushroomTree",
+      "x": -705,
+      "z": -8,
+      "alive": true
+    },
+    {
+      "id": 42,
+      "type": "crystalTwig",
+      "x": -14,
+      "z": -284,
+      "alive": true
+    },
+    {
+      "id": 43,
+      "type": "crystalTwig",
+      "x": -1127,
+      "z": -999,
+      "alive": true
+    },
+    {
+      "id": 44,
+      "type": "fanPalm",
+      "x": -517,
+      "z": 690,
+      "alive": true
+    },
+    {
+      "id": 45,
+      "type": "bladePatch",
+      "x": -1033,
+      "z": -902,
+      "alive": true
+    },
+    {
+      "id": 46,
+      "type": "spikePine",
+      "x": -219,
+      "z": -540,
+      "alive": true
+    },
+    {
+      "id": 47,
+      "type": "tuftGrass",
+      "x": 926,
+      "z": -1223,
+      "alive": true
+    },
+    {
+      "id": 48,
+      "type": "stubOak",
+      "x": 655,
+      "z": 479,
+      "alive": true
+    },
+    {
+      "id": 49,
+      "type": "crystalTwig",
+      "x": -165,
+      "z": -183,
+      "alive": true
+    },
+    {
+      "id": 50,
+      "type": "stubOak",
+      "x": 813,
+      "z": -772,
+      "alive": true
+    },
+    {
+      "id": 51,
+      "type": "tuftGrass",
+      "x": 1286,
+      "z": -1578,
+      "alive": true
+    },
+    {
+      "id": 52,
+      "type": "crystalTwig",
+      "x": -969,
+      "z": 936,
+      "alive": true
+    },
+    {
+      "id": 53,
+      "type": "stubOak",
+      "x": -314,
+      "z": -668,
+      "alive": true
+    },
+    {
+      "id": 54,
+      "type": "fanGrass",
+      "x": -981,
+      "z": 1279,
+      "alive": true
+    },
+    {
+      "id": 55,
+      "type": "crystalTwig",
+      "x": -413,
+      "z": 1092,
+      "alive": true
+    },
+    {
+      "id": 56,
+      "type": "tuftGrass",
+      "x": -544,
+      "z": -218,
+      "alive": true
+    },
+    {
+      "id": 57,
+      "type": "stubOak",
+      "x": -882,
+      "z": 947,
+      "alive": true
+    },
+    {
+      "id": 58,
+      "type": "bladePatch",
+      "x": 69,
+      "z": -980,
+      "alive": true
+    },
+    {
+      "id": 59,
+      "type": "fanGrass",
+      "x": 573,
+      "z": 1484,
+      "alive": true
+    },
+    {
+      "id": 60,
+      "type": "tuftGrass",
+      "x": -251,
+      "z": 978,
+      "alive": true
+    },
+    {
+      "id": 61,
+      "type": "stubOak",
+      "x": -1438,
+      "z": -1565,
+      "alive": true
+    },
+    {
+      "id": 62,
+      "type": "bladePatch",
+      "x": -1122,
+      "z": 555,
+      "alive": true
+    },
+    {
+      "id": 63,
+      "type": "spikePine",
+      "x": 828,
+      "z": -1271,
+      "alive": true
+    },
+    {
+      "id": 64,
+      "type": "bladePatch",
+      "x": -924,
+      "z": -1221,
+      "alive": true
+    },
+    {
+      "id": 65,
+      "type": "fanPalm",
+      "x": 1502,
+      "z": 1033,
+      "alive": true
+    },
+    {
+      "id": 66,
+      "type": "crystalTwig",
+      "x": -1572,
+      "z": -266,
+      "alive": true
+    },
+    {
+      "id": 67,
+      "type": "fanGrass",
+      "x": 531,
+      "z": -447,
+      "alive": true
+    },
+    {
+      "id": 68,
+      "type": "crystalTwig",
+      "x": 370,
+      "z": 54,
+      "alive": true
+    },
+    {
+      "id": 69,
+      "type": "tuftGrass",
+      "x": 714,
+      "z": 1280,
+      "alive": true
+    },
+    {
+      "id": 70,
+      "type": "spikePine",
+      "x": -1055,
+      "z": 1133,
+      "alive": true
+    },
+    {
+      "id": 71,
+      "type": "fanPalm",
+      "x": 485,
+      "z": -704,
+      "alive": true
+    },
+    {
+      "id": 72,
+      "type": "tuftGrass",
+      "x": 360,
+      "z": 169,
+      "alive": true
+    },
+    {
+      "id": 73,
+      "type": "tuftGrass",
+      "x": -162,
+      "z": -427,
+      "alive": true
+    },
+    {
+      "id": 74,
+      "type": "bladePatch",
+      "x": 1147,
+      "z": -549,
+      "alive": true
+    },
+    {
+      "id": 75,
+      "type": "bladePatch",
+      "x": -512,
+      "z": 186,
+      "alive": true
+    },
+    {
+      "id": 76,
+      "type": "stubOak",
+      "x": 565,
+      "z": 498,
+      "alive": true
+    },
+    {
+      "id": 77,
+      "type": "fanGrass",
+      "x": -268,
+      "z": 1421,
+      "alive": true
+    },
+    {
+      "id": 78,
+      "type": "stubOak",
+      "x": -346,
+      "z": -301,
+      "alive": true
+    },
+    {
+      "id": 79,
+      "type": "fanGrass",
+      "x": 490,
+      "z": -1521,
+      "alive": true
+    },
+    {
+      "id": 80,
+      "type": "crystalTwig",
+      "x": -1383,
+      "z": 421,
+      "alive": true
+    },
+    {
+      "id": 81,
+      "type": "stubOak",
+      "x": -1169,
+      "z": -627,
+      "alive": true
+    },
+    {
+      "id": 82,
+      "type": "mushroomTree",
+      "x": -432,
+      "z": -551,
+      "alive": true
+    },
+    {
+      "id": 83,
+      "type": "stubOak",
+      "x": 1083,
+      "z": 1166,
+      "alive": true
+    },
+    {
+      "id": 84,
+      "type": "bladePatch",
+      "x": 330,
+      "z": -1120,
+      "alive": true
+    },
+    {
+      "id": 85,
+      "type": "stubOak",
+      "x": 801,
+      "z": -170,
+      "alive": true
+    },
+    {
+      "id": 86,
+      "type": "stubOak",
+      "x": 1499,
+      "z": -533,
+      "alive": true
+    },
+    {
+      "id": 87,
+      "type": "crystalTwig",
+      "x": -372,
+      "z": -567,
+      "alive": true
+    },
+    {
+      "id": 88,
+      "type": "stubOak",
+      "x": -1564,
+      "z": -57,
+      "alive": true
+    },
+    {
+      "id": 89,
+      "type": "tuftGrass",
+      "x": -593,
+      "z": 677,
+      "alive": true
+    },
+    {
+      "id": 90,
+      "type": "crystalTwig",
+      "x": -433,
+      "z": -138,
+      "alive": true
+    },
+    {
+      "id": 91,
+      "type": "tuftGrass",
+      "x": -173,
+      "z": -707,
+      "alive": true
+    },
+    {
+      "id": 92,
+      "type": "bladePatch",
+      "x": 686,
+      "z": 478,
+      "alive": true
+    },
+    {
+      "id": 93,
+      "type": "bladePatch",
+      "x": 677,
+      "z": 1325,
+      "alive": true
+    },
+    {
+      "id": 94,
+      "type": "fanGrass",
+      "x": 625,
+      "z": -137,
+      "alive": true
+    },
+    {
+      "id": 95,
+      "type": "mushroomTree",
+      "x": 1493,
+      "z": 384,
+      "alive": true
+    },
+    {
+      "id": 96,
+      "type": "mushroomTree",
+      "x": 1210,
+      "z": -626,
+      "alive": true
+    },
+    {
+      "id": 97,
+      "type": "mushroomTree",
+      "x": 1239,
+      "z": -696,
+      "alive": true
+    },
+    {
+      "id": 98,
+      "type": "bladePatch",
+      "x": -1159,
+      "z": 615,
+      "alive": true
+    },
+    {
+      "id": 99,
+      "type": "fanPalm",
+      "x": 716,
+      "z": -705,
+      "alive": true
+    },
+    {
+      "id": 100,
+      "type": "crystalTwig",
+      "x": -886,
+      "z": -1184,
+      "alive": true
+    },
+    {
+      "id": 101,
+      "type": "tuftGrass",
+      "x": 320,
+      "z": -73,
+      "alive": true
+    },
+    {
+      "id": 102,
+      "type": "tuftGrass",
+      "x": 668,
+      "z": 340,
+      "alive": true
+    },
+    {
+      "id": 103,
+      "type": "fanGrass",
+      "x": 1595,
+      "z": 680,
+      "alive": true
+    },
+    {
+      "id": 104,
+      "type": "stubOak",
+      "x": -191,
+      "z": -1463,
+      "alive": true
+    },
+    {
+      "id": 105,
+      "type": "fanGrass",
+      "x": -1371,
+      "z": 1508,
+      "alive": true
+    },
+    {
+      "id": 106,
+      "type": "spikePine",
+      "x": -1343,
+      "z": 1420,
+      "alive": true
+    },
+    {
+      "id": 107,
+      "type": "mushroomTree",
+      "x": -1324,
+      "z": -1124,
+      "alive": true
+    },
+    {
+      "id": 108,
+      "type": "fanPalm",
+      "x": 807,
+      "z": 509,
+      "alive": true
+    },
+    {
+      "id": 109,
+      "type": "tuftGrass",
+      "x": -1191,
+      "z": 17,
+      "alive": true
+    },
+    {
+      "id": 110,
+      "type": "fanGrass",
+      "x": -508,
+      "z": 1151,
+      "alive": true
+    },
+    {
+      "id": 111,
+      "type": "bladePatch",
+      "x": 1056,
+      "z": -951,
+      "alive": true
+    },
+    {
+      "id": 112,
+      "type": "mushroomTree",
+      "x": -1503,
+      "z": 68,
+      "alive": true
+    },
+    {
+      "id": 113,
+      "type": "tuftGrass",
+      "x": 1424,
+      "z": -652,
+      "alive": true
+    },
+    {
+      "id": 114,
+      "type": "fanPalm",
+      "x": -544,
+      "z": -290,
+      "alive": true
+    },
+    {
+      "id": 115,
+      "type": "fanGrass",
+      "x": -694,
+      "z": -1248,
+      "alive": true
+    },
+    {
+      "id": 116,
+      "type": "fanGrass",
+      "x": -1108,
+      "z": -433,
+      "alive": true
+    },
+    {
+      "id": 117,
+      "type": "mushroomTree",
+      "x": 789,
+      "z": 1458,
+      "alive": true
+    },
+    {
+      "id": 118,
+      "type": "mushroomTree",
+      "x": 1121,
+      "z": -771,
+      "alive": true
+    },
+    {
+      "id": 119,
+      "type": "spikePine",
+      "x": -667,
+      "z": 1348,
+      "alive": true
+    },
+    {
+      "id": 120,
+      "type": "tuftGrass",
+      "x": -905,
+      "z": -89,
+      "alive": true
+    },
+    {
+      "id": 121,
+      "type": "mushroomTree",
+      "x": -740,
+      "z": -1093,
+      "alive": true
+    },
+    {
+      "id": 122,
+      "type": "crystalTwig",
+      "x": -1222,
+      "z": 846,
+      "alive": true
+    },
+    {
+      "id": 123,
+      "type": "fanGrass",
+      "x": -354,
+      "z": 1554,
+      "alive": true
+    },
+    {
+      "id": 124,
+      "type": "fanGrass",
+      "x": 89,
+      "z": 1587,
+      "alive": true
+    },
+    {
+      "id": 125,
+      "type": "bladePatch",
+      "x": 537,
+      "z": 517,
+      "alive": true
+    },
+    {
+      "id": 126,
+      "type": "crystalTwig",
+      "x": -1221,
+      "z": 875,
+      "alive": true
+    },
+    {
+      "id": 127,
+      "type": "fanGrass",
+      "x": 986,
+      "z": 601,
+      "alive": true
+    },
+    {
+      "id": 128,
+      "type": "mushroomTree",
+      "x": -619,
+      "z": 129,
+      "alive": true
+    },
+    {
+      "id": 129,
+      "type": "fanPalm",
+      "x": -866,
+      "z": -380,
+      "alive": true
+    },
+    {
+      "id": 130,
+      "type": "crystalTwig",
+      "x": -1051,
+      "z": -165,
+      "alive": true
+    },
+    {
+      "id": 131,
+      "type": "fanGrass",
+      "x": 688,
+      "z": -313,
+      "alive": true
+    },
+    {
+      "id": 132,
+      "type": "crystalTwig",
+      "x": 203,
+      "z": -184,
+      "alive": true
+    },
+    {
+      "id": 133,
+      "type": "fanGrass",
+      "x": -1424,
+      "z": 326,
+      "alive": true
+    },
+    {
+      "id": 134,
+      "type": "fanGrass",
+      "x": -178,
+      "z": -838,
+      "alive": true
+    },
+    {
+      "id": 135,
+      "type": "spikePine",
+      "x": -1373,
+      "z": -83,
+      "alive": true
+    },
+    {
+      "id": 136,
+      "type": "fanPalm",
+      "x": 357,
+      "z": 392,
+      "alive": true
+    },
+    {
+      "id": 137,
+      "type": "spikePine",
+      "x": 1271,
+      "z": -861,
+      "alive": true
+    },
+    {
+      "id": 138,
+      "type": "tuftGrass",
+      "x": 1446,
+      "z": -169,
+      "alive": true
+    },
+    {
+      "id": 139,
+      "type": "bladePatch",
+      "x": -1184,
+      "z": 396,
+      "alive": true
+    },
+    {
+      "id": 140,
+      "type": "crystalTwig",
+      "x": -95,
+      "z": -1264,
+      "alive": true
+    },
+    {
+      "id": 141,
+      "type": "fanPalm",
+      "x": 239,
+      "z": -953,
+      "alive": true
+    },
+    {
+      "id": 142,
+      "type": "tuftGrass",
+      "x": -300,
+      "z": 1088,
+      "alive": true
+    },
+    {
+      "id": 143,
+      "type": "crystalTwig",
+      "x": 1440,
+      "z": -1410,
+      "alive": true
+    },
+    {
+      "id": 144,
+      "type": "tuftGrass",
+      "x": -347,
+      "z": -302,
+      "alive": true
+    },
+    {
+      "id": 145,
+      "type": "spikePine",
+      "x": -678,
+      "z": 210,
+      "alive": true
+    },
+    {
+      "id": 146,
+      "type": "mushroomTree",
+      "x": 856,
+      "z": -360,
+      "alive": true
+    },
+    {
+      "id": 147,
+      "type": "spikePine",
+      "x": -568,
+      "z": -1007,
+      "alive": true
+    },
+    {
+      "id": 148,
+      "type": "fanGrass",
+      "x": -407,
+      "z": 1210,
+      "alive": true
+    },
+    {
+      "id": 149,
+      "type": "tuftGrass",
+      "x": -948,
+      "z": 266,
+      "alive": true
+    },
+    {
+      "id": 150,
+      "type": "tuftGrass",
+      "x": -1428,
+      "z": -1509,
+      "alive": true
+    },
+    {
+      "id": 151,
+      "type": "fanPalm",
+      "x": 376,
+      "z": -786,
+      "alive": true
+    },
+    {
+      "id": 152,
+      "type": "fanGrass",
+      "x": -1043,
+      "z": 954,
+      "alive": true
+    },
+    {
+      "id": 153,
+      "type": "bladePatch",
+      "x": -471,
+      "z": 961,
+      "alive": true
+    },
+    {
+      "id": 154,
+      "type": "stubOak",
+      "x": 1074,
+      "z": -136,
+      "alive": true
+    },
+    {
+      "id": 155,
+      "type": "tuftGrass",
+      "x": -503,
+      "z": -899,
+      "alive": true
+    },
+    {
+      "id": 156,
+      "type": "bladePatch",
+      "x": 1210,
+      "z": -203,
+      "alive": true
+    },
+    {
+      "id": 157,
+      "type": "mushroomTree",
+      "x": -236,
+      "z": -899,
+      "alive": true
+    },
+    {
+      "id": 158,
+      "type": "tuftGrass",
+      "x": 42,
+      "z": -495,
+      "alive": true
+    },
+    {
+      "id": 159,
+      "type": "fanPalm",
+      "x": -1185,
+      "z": 1594,
+      "alive": true
+    },
+    {
+      "id": 160,
+      "type": "mushroomTree",
+      "x": 990,
+      "z": 449,
+      "alive": true
+    },
+    {
+      "id": 161,
+      "type": "bladePatch",
+      "x": -1279,
+      "z": -753,
+      "alive": true
+    },
+    {
+      "id": 162,
+      "type": "stubOak",
+      "x": -32,
+      "z": -16,
+      "alive": true
+    },
+    {
+      "id": 163,
+      "type": "bladePatch",
+      "x": -480,
+      "z": -429,
+      "alive": true
+    },
+    {
+      "id": 164,
+      "type": "tuftGrass",
+      "x": 1338,
+      "z": 917,
+      "alive": true
+    },
+    {
+      "id": 165,
+      "type": "stubOak",
+      "x": -716,
+      "z": 1185,
+      "alive": true
+    },
+    {
+      "id": 166,
+      "type": "mushroomTree",
+      "x": -771,
+      "z": -1427,
+      "alive": true
+    },
+    {
+      "id": 167,
+      "type": "fanGrass",
+      "x": 1575,
+      "z": 856,
+      "alive": true
+    },
+    {
+      "id": 168,
+      "type": "tuftGrass",
+      "x": -896,
+      "z": 1282,
+      "alive": true
+    },
+    {
+      "id": 169,
+      "type": "stubOak",
+      "x": 1209,
+      "z": 1517,
+      "alive": true
+    },
+    {
+      "id": 170,
+      "type": "fanGrass",
+      "x": -487,
+      "z": 845,
+      "alive": true
+    },
+    {
+      "id": 171,
+      "type": "spikePine",
+      "x": -397,
+      "z": 375,
+      "alive": true
+    },
+    {
+      "id": 172,
+      "type": "crystalTwig",
+      "x": 825,
+      "z": 1454,
+      "alive": true
+    },
+    {
+      "id": 173,
+      "type": "crystalTwig",
+      "x": -515,
+      "z": 356,
+      "alive": true
+    },
+    {
+      "id": 174,
+      "type": "mushroomTree",
+      "x": 1408,
+      "z": 373,
+      "alive": true
+    },
+    {
+      "id": 175,
+      "type": "stubOak",
+      "x": -526,
+      "z": 1500,
+      "alive": true
+    },
+    {
+      "id": 176,
+      "type": "spikePine",
+      "x": 961,
+      "z": 273,
+      "alive": true
+    },
+    {
+      "id": 177,
+      "type": "mushroomTree",
+      "x": 930,
+      "z": 753,
+      "alive": true
+    },
+    {
+      "id": 178,
+      "type": "mushroomTree",
+      "x": 809,
+      "z": -23,
+      "alive": true
+    },
+    {
+      "id": 179,
+      "type": "mushroomTree",
+      "x": 600,
+      "z": 227,
+      "alive": true
+    },
+    {
+      "id": 180,
+      "type": "spikePine",
+      "x": -1449,
+      "z": -1319,
+      "alive": true
+    },
+    {
+      "id": 181,
+      "type": "fanPalm",
+      "x": -1324,
+      "z": -299,
+      "alive": true
+    },
+    {
+      "id": 182,
+      "type": "stubOak",
+      "x": 1591,
+      "z": 526,
+      "alive": true
+    },
+    {
+      "id": 183,
+      "type": "mushroomTree",
+      "x": -1568,
+      "z": -534,
+      "alive": true
+    },
+    {
+      "id": 184,
+      "type": "fanPalm",
+      "x": -303,
+      "z": -1482,
+      "alive": true
+    },
+    {
+      "id": 185,
+      "type": "fanGrass",
+      "x": -942,
+      "z": -1002,
+      "alive": true
+    },
+    {
+      "id": 186,
+      "type": "mushroomTree",
+      "x": -1489,
+      "z": -618,
+      "alive": true
+    },
+    {
+      "id": 187,
+      "type": "stubOak",
+      "x": -1347,
+      "z": 301,
+      "alive": true
+    },
+    {
+      "id": 188,
+      "type": "tuftGrass",
+      "x": -1284,
+      "z": -1083,
+      "alive": true
+    },
+    {
+      "id": 189,
+      "type": "crystalTwig",
+      "x": 119,
+      "z": -453,
+      "alive": true
+    },
+    {
+      "id": 190,
+      "type": "spikePine",
+      "x": -1441,
+      "z": 328,
+      "alive": true
+    },
+    {
+      "id": 191,
+      "type": "tuftGrass",
+      "x": -1428,
+      "z": -279,
+      "alive": true
+    },
+    {
+      "id": 192,
+      "type": "spikePine",
+      "x": -1010,
+      "z": -950,
+      "alive": true
+    },
+    {
+      "id": 193,
+      "type": "crystalTwig",
+      "x": 1523,
+      "z": -328,
+      "alive": true
+    },
+    {
+      "id": 194,
+      "type": "tuftGrass",
+      "x": 269,
+      "z": -1134,
+      "alive": true
+    },
+    {
+      "id": 195,
+      "type": "tuftGrass",
+      "x": -848,
+      "z": 836,
+      "alive": true
+    },
+    {
+      "id": 196,
+      "type": "fanGrass",
+      "x": 1064,
+      "z": -1202,
+      "alive": true
+    },
+    {
+      "id": 197,
+      "type": "bladePatch",
+      "x": -241,
+      "z": -535,
+      "alive": true
+    },
+    {
+      "id": 198,
+      "type": "crystalTwig",
+      "x": 1023,
+      "z": -672,
+      "alive": true
+    },
+    {
+      "id": 199,
+      "type": "bladePatch",
+      "x": -1375,
+      "z": -1214,
+      "alive": true
+    },
+    {
+      "id": 200,
+      "type": "spikePine",
+      "x": -604,
+      "z": -762,
+      "alive": true
+    },
+    {
+      "id": 201,
+      "type": "spikePine",
+      "x": -679,
+      "z": 1334,
+      "alive": true
+    },
+    {
+      "id": 202,
+      "type": "fanPalm",
+      "x": 1158,
+      "z": 1410,
+      "alive": true
+    },
+    {
+      "id": 203,
+      "type": "tuftGrass",
+      "x": 1344,
+      "z": 1333,
+      "alive": true
+    },
+    {
+      "id": 204,
+      "type": "crystalTwig",
+      "x": 789,
+      "z": -1222,
+      "alive": true
+    },
+    {
+      "id": 205,
+      "type": "bladePatch",
+      "x": 1253,
+      "z": -927,
+      "alive": true
+    },
+    {
+      "id": 206,
+      "type": "tuftGrass",
+      "x": -892,
+      "z": -1562,
+      "alive": true
+    },
+    {
+      "id": 207,
+      "type": "crystalTwig",
+      "x": 1587,
+      "z": -554,
+      "alive": true
+    },
+    {
+      "id": 208,
+      "type": "tuftGrass",
+      "x": -732,
+      "z": 696,
+      "alive": true
+    },
+    {
+      "id": 209,
+      "type": "mushroomTree",
+      "x": 614,
+      "z": -1166,
+      "alive": true
+    },
+    {
+      "id": 210,
+      "type": "crystalTwig",
+      "x": -542,
+      "z": -1091,
+      "alive": true
+    },
+    {
+      "id": 211,
+      "type": "mushroomTree",
+      "x": 1216,
+      "z": -1190,
+      "alive": true
+    },
+    {
+      "id": 212,
+      "type": "fanPalm",
+      "x": -194,
+      "z": 590,
+      "alive": true
+    },
+    {
+      "id": 213,
+      "type": "crystalTwig",
+      "x": 357,
+      "z": 312,
+      "alive": true
+    },
+    {
+      "id": 214,
+      "type": "bladePatch",
+      "x": 395,
+      "z": 688,
+      "alive": true
+    },
+    {
+      "id": 215,
+      "type": "mushroomTree",
+      "x": 491,
+      "z": -709,
+      "alive": true
+    },
+    {
+      "id": 216,
+      "type": "crystalTwig",
+      "x": -490,
+      "z": 1496,
+      "alive": true
+    },
+    {
+      "id": 217,
+      "type": "bladePatch",
+      "x": -991,
+      "z": 711,
+      "alive": true
+    },
+    {
+      "id": 218,
+      "type": "mushroomTree",
+      "x": -315,
+      "z": 1241,
+      "alive": true
+    },
+    {
+      "id": 219,
+      "type": "fanGrass",
+      "x": -333,
+      "z": 1332,
+      "alive": true
+    },
+    {
+      "id": 220,
+      "type": "spikePine",
+      "x": 384,
+      "z": -961,
+      "alive": true
+    }
+  ],
+  "nextBuildingId": 1,
+  "nextPlantId": 221
+}

@@ -1,0 +1,39 @@
+{
+  "credits": {
+    "Guest-8492": 1000,
+    "Guest-543": 1000,
+    "Guest-4148": 1000
+  },
+  "items": {
+    "Guest-8492": [
+      {
+        "id": "W1",
+        "type": "weapon",
+        "template": "kineticProjector",
+        "name": "Kinetic Projector",
+        "mods": {}
+      }
+    ],
+    "Guest-543": [
+      {
+        "id": "W2",
+        "type": "weapon",
+        "template": "kineticProjector",
+        "name": "Kinetic Projector",
+        "mods": {}
+      }
+    ],
+    "Guest-4148": [
+      {
+        "id": "W3",
+        "type": "weapon",
+        "template": "kineticProjector",
+        "name": "Kinetic Projector",
+        "mods": {}
+      }
+    ]
+  },
+  "counters": {
+    "item": 4
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ftd-level1-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Level 1 prototype for FAILURE_TO_DIE (local only)",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.8.1"
+  }
+}

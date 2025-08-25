@@ -1,0 +1,911 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Orientation message for portrait mode - ensure maximum visibility */
+#orientationMessage {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: #000 !important;
+  color: #00ffff !important;
+  display: none !important; /* Hidden by default, shown via JavaScript when needed */
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 99999 !important; /* Even higher z-index */
+  text-align: center !important;
+  font-family: 'Courier New', monospace !important;
+  /* Prevent any scrolling or zooming */
+  overflow: hidden !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  touch-action: none !important;
+}
+
+#orientationMessage h2 {
+  font-size: 2em;
+  margin: 20px 0;
+  text-shadow: 0 0 20px #00ffff;
+}
+
+#orientationMessage p {
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+
+#orientationMessage .rotate-icon {
+  font-size: 4em;
+  animation: tilt 2s ease-in-out infinite;
+}
+
+#orientationMessage .rotate-animation {
+  font-size: 3em;
+  margin-top: 30px;
+  animation: rotate 2s linear infinite;
+  color: #00ff00;
+}
+
+@keyframes tilt {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-90deg); }
+  75% { transform: rotate(-90deg); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background: #000;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Allow touch events but disable pinch zoom */
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Standardized Game Area - optimized for landscape mobile */
+#gameArea {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: #000;
+  border: 2px solid #00ffff;
+  box-shadow: 0 0 20px #00ffff;
+  overflow: hidden;
+  transform-origin: center center;
+  /* Contain all UI elements within the game area */
+}
+
+/* Remove border in fullscreen mode */
+@media (max-width: 768px) {
+  #gameArea {
+    border: none;
+    box-shadow: none;
+  }
+}
+
+/* Fullscreen specific styles */
+:fullscreen #gameArea,
+:-webkit-full-screen #gameArea,
+:-moz-full-screen #gameArea,
+:-ms-fullscreen #gameArea {
+  border: none;
+  box-shadow: none;
+}
+
+/* HUD styles - positioned relative to game area */
+#hud {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1500; /* Higher than touch controls, lower than buttons */
+  width: 200px;
+}
+
+/* Adjust HUD for mobile landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+  #hud {
+    top: 10px;
+    left: 10px;
+    transform: scale(0.8);
+    transform-origin: top left;
+  }
+}
+
+/* Fullscreen mode HUD adjustments */
+:fullscreen #hud,
+:-webkit-full-screen #hud,
+:-moz-full-screen #hud,
+:-ms-fullscreen #hud {
+  top: 10px;
+  left: 10px;
+  transform: scale(0.75); /* Smaller in fullscreen to save space */
+  transform-origin: top left;
+  opacity: 0.9; /* Slightly transparent to not obstruct gameplay */
+}
+
+.bar {
+  width: 100%;
+  height: 20px;
+  border: 2px solid #00ffff;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+.bar .fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff00, #ffff00, #ff0000);
+  width: 100%;
+  transition: width 0.3s ease;
+}
+
+.bar#integrity .fill {
+  background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00);
+}
+
+.bar#charge .fill {
+  background: linear-gradient(90deg, #0000ff, #00ffff, #ffffff);
+}
+
+/* Touch Controls - only visible on touch devices */
+.touch-only {
+  display: none;
+}
+
+/* Force show on all mobile-like devices */
+@media (max-width: 768px), 
+       (hover: none), 
+       (pointer: coarse),
+       (any-hover: none) {
+  .touch-only {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
+/* Force show touch controls on coarse pointer or when touch is available */
+@media (pointer: coarse) {
+  .touch-only { display: block !important; visibility: visible !important; }
+  #touchControls { display: block !important; }
+}
+
+#touchControls {
+  position: fixed; /* Fixed by default for full viewport coverage */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* container ignores events */
+  z-index: 900; /* below HUD/buttons, above canvas */
+}
+#touchControls > * { pointer-events: auto; }
+
+/* In fullscreen mode, touch controls are positioned relative to game area */
+:fullscreen #touchControls,
+:-webkit-full-screen #touchControls,
+:-moz-full-screen #touchControls,
+:-ms-fullscreen #touchControls {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* Ensure buttons are always clickable on mobile */
+@media (max-width: 768px), 
+       (hover: none), 
+       (pointer: coarse),
+       (any-hover: none) {
+  #debugExportBtn,
+  #fullscreenBtn {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
+.touchCircle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 3px solid rgba(0, 255, 255, 0.8);
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.3);
+  pointer-events: auto;
+  touch-action: none;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  z-index: 1050; /* above canvas/hud, below arc buttons */
+}
+
+.touchCenter {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 255, 255, 0.6);
+  border: 2px solid rgba(0, 255, 255, 1);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+#leftCircle {
+  bottom: 15vh; /* Optimized for landscape */
+  left: 30px;
+}
+
+/* Mobile right-side button group */
+.mobile-button-group {
+  position: absolute;
+  right: 20px;
+  bottom: 15vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1100;
+}
+
+/* Mobile buttons */
+.mobileBtn {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 255, 255, 0.2);
+  border: 2px solid rgba(0, 255, 255, 0.6);
+  color: #00ffff;
+  font-size: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  pointer-events: auto !important;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  z-index: 1100;
+}
+
+.mobileBtn:active {
+  background: rgba(0, 255, 255, 0.4);
+  transform: scale(0.95);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+/* Ensure mobile buttons work in fullscreen */
+:fullscreen .mobileBtn,
+:-webkit-full-screen .mobileBtn,
+:-moz-full-screen .mobileBtn,
+:-ms-fullscreen .mobileBtn {
+  pointer-events: auto !important;
+  z-index: 1101 !important;
+}
+
+/* Special button styles */
+.mobileBtn--primary {
+  background: rgba(0, 255, 170, 0.3);
+  border-color: rgba(0, 255, 170, 0.9);
+  color: #00ffaa;
+}
+
+.mobileBtn--accent {
+  background: rgba(255, 255, 0, 0.25);
+  border-color: rgba(255, 255, 0, 0.8);
+  color: #ffff99;
+}
+
+.mobileBtn--sprint {
+  background: rgba(255, 136, 0, 0.25);
+  border-color: rgba(255, 136, 0, 0.8);
+  color: #ff8800;
+}
+
+.mobileBtn--sprint.active {
+  background: rgba(255, 136, 0, 0.5);
+  border-color: rgba(255, 136, 0, 1);
+  box-shadow: 0 0 20px rgba(255, 136, 0, 0.8);
+}
+
+/* Adjust button layout for landscape */
+@media (max-height: 600px) {
+  .mobile-button-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 120px;
+    bottom: 10vh;
+  }
+  
+  .mobileBtn {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+/* Adjust for very small screens */
+@media (max-width: 480px) {
+  .mobileBtn {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .mobile-button-group {
+    right: 10px;
+    gap: 8px;
+  }
+}
+
+/* Remove old arc button and camera rotate button styles */
+/* The following styles are deprecated and replaced by mobileBtn */
+.cameraRotateBtn {
+  display: none; /* Hide old camera rotate buttons */
+}
+
+.arcBtn {
+  display: none; /* Hide old arc buttons */
+}
+
+/* Mobile adjustments for camera buttons */
+@media (max-width: 768px) {
+  #rotateCamLeft {
+    bottom: calc(15vh + 110px);
+    right: 65px; /* Left button to the left of center */
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+  
+  #rotateCamRight {
+    bottom: calc(15vh + 110px);
+    right: 15px; /* Right button to the right of center */
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+  
+  /* Mobile combat buttons positioning */
+  #fireButton {
+    position: fixed !important;
+    z-index: 1100 !important;
+  }
+  
+  #switchWeaponButton, #buildModeButton, #healButton, #craftMenuButton {
+    position: fixed !important;
+    z-index: 1100 !important;
+  }
+  
+  /* Ensure HUD elements are visible on mobile */
+  #resourceDisplay, #scoreDisplay, #weaponDisplay {
+    position: fixed !important;
+    z-index: 1000 !important;
+  }
+  
+  /* Mobile menu adjustments */
+  #buildMenu, #craftMenu {
+    max-height: 50vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Touch-friendly menu items */
+  .build-item, .craft-item {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .build-item:active, .craft-item:active {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+}
+
+
+/* Adjust touch controls for landscape mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  #leftCircle {
+    bottom: 10vh;
+    left: 20px;
+  }
+  
+  .touchCircle {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Fullscreen mode touch control adjustments */
+:fullscreen #leftCircle,
+:-webkit-full-screen #leftCircle,
+:-moz-full-screen #leftCircle,
+:-ms-fullscreen #leftCircle {
+  bottom: 80px; /* Fixed positioning in fullscreen */
+  left: 25px;
+  width: 90px;
+  height: 90px;
+}
+
+
+:fullscreen .touchCircle,
+:-webkit-full-screen .touchCircle,
+:-moz-full-screen .touchCircle,
+:-ms-fullscreen .touchCircle {
+  /* More subtle in fullscreen mode */
+  border: 2px solid rgba(0, 255, 255, 0.6);
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* Active touch feedback - enhanced for dual-touch visibility */
+.touchCircle.active {
+  border-color: rgba(0, 255, 255, 1);
+  background: rgba(0, 255, 255, 0.4);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.touchCircle.active .touchCenter {
+  background: rgba(0, 255, 255, 0.8);
+  box-shadow: 0 0 15px #00ffff;
+  transform: scale(1.2);
+}
+
+/* Canvas will be positioned by JavaScript */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Build info display - always on top */
+#buildInfo {
+  position: fixed !important; /* Fixed to viewport, not game area */
+  bottom: 5px !important;
+  left: 5px !important;
+  z-index: 999999 !important; /* Highest z-index - above everything including orientation message */
+  display: block !important; /* Always visible */
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Never hide build info - it should always be accessible */
+@media (max-width: 768px) and (orientation: landscape) {
+  #buildInfo {
+    display: block !important; /* Override hiding on mobile */
+    bottom: 5px !important;
+    left: 5px !important;
+  }
+}
+
+/* Keep visible even in fullscreen mode */
+:fullscreen #buildInfo,
+:-webkit-full-screen #buildInfo,
+:-moz-full-screen #buildInfo,
+:-ms-fullscreen #buildInfo {
+  display: block !important;
+  position: fixed !important;
+  z-index: 999999 !important;
+}
+
+#buildTime {
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+#buildTime:hover {
+  opacity: 1;
+  background: rgba(0, 255, 255, 0.2);
+}
+
+/* Debug export button */
+#debugExportBtn {
+  position: fixed; /* Fixed by default for viewport positioning */
+  top: 100px;
+  right: 80px; /* To the left of fullscreen button */
+  z-index: 2000; /* Higher z-index to ensure it's above touch controls */
+  background: rgba(255, 255, 0, 0.6);
+  border: 3px solid rgba(255, 255, 0, 1);
+  color: #ffff00;
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(255, 255, 0, 0.3);
+}
+
+#debugExportBtn:active {
+  background: rgba(255, 255, 0, 0.4);
+  transform: scale(0.95);
+}
+
+/* Fullscreen button */
+#fullscreenBtn {
+  position: fixed; /* Fixed by default for viewport positioning */
+  top: 100px;
+  right: 20px;
+  z-index: 2000; /* Higher z-index to ensure it's above touch controls */
+  background: rgba(0, 255, 255, 0.6);
+  border: 3px solid rgba(0, 255, 255, 1);
+  color: #00ffff;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: manipulation;
+  transition: all 0.2s ease;
+  pointer-events: auto;
+  -webkit-tap-highlight-color: rgba(0, 255, 255, 0.3);
+}
+
+#fullscreenBtn:active {
+  background: rgba(0, 255, 255, 0.4);
+  transform: scale(0.95);
+}
+
+/* In fullscreen mode, buttons are positioned relative to game area */
+:fullscreen #debugExportBtn,
+:-webkit-full-screen #debugExportBtn,
+:-moz-full-screen #debugExportBtn,
+:-ms-fullscreen #debugExportBtn,
+:fullscreen #fullscreenBtn,
+:-webkit-full-screen #fullscreenBtn,
+:-moz-full-screen #fullscreenBtn,
+:-ms-fullscreen #fullscreenBtn {
+  position: absolute; /* Relative to game area in fullscreen */
+}
+
+/* Mobile-specific positioning adjustments */
+@media (max-width: 768px) {
+  #debugExportBtn,
+  #fullscreenBtn {
+    /* Ensure buttons are more accessible on mobile */
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    top: 15px;
+  }
+  
+  #debugExportBtn {
+    right: 65px; /* Adjust spacing for smaller buttons */
+  }
+  
+  #fullscreenBtn {
+    right: 15px;
+  }
+}
+
+/* Fullscreen mode button positioning adjustments */
+:fullscreen #debugExportBtn,
+:-webkit-full-screen #debugExportBtn,
+:-moz-full-screen #debugExportBtn,
+:-ms-fullscreen #debugExportBtn {
+  top: 10px;
+  right: 60px;
+  opacity: 0.9; /* Slightly more transparent to not obstruct gameplay */
+}
+
+:fullscreen #fullscreenBtn,
+:-webkit-full-screen #fullscreenBtn,
+:-moz-full-screen #fullscreenBtn,
+:-ms-fullscreen #fullscreenBtn {
+  top: 10px;
+  right: 10px;
+  opacity: 0.9;
+}
+
+/* Comprehensive UI layer management for fullscreen mode */
+:fullscreen,
+:-webkit-full-screen,
+:-moz-full-screen,
+:-ms-fullscreen {
+  /* Ensure all UI elements fade in smoothly when entering fullscreen */
+  #hud, #debugExportBtn, #fullscreenBtn, .touchCircle {
+    animation: fadeInFullscreen 0.3s ease-in-out;
+  }
+  
+  /* Prevent any scrolling in fullscreen */
+  overflow: hidden;
+}
+
+@keyframes fadeInFullscreen {
+  from { 
+    opacity: 0; 
+    transform: scale(0.95);
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+}
+
+/* Emergency z-index fixes - ensures UI hierarchy is always correct */
+#buildInfo { z-index: 999999 !important; } /* Highest - always accessible */
+#orientationMessage { z-index: 99999 !important; } /* Second highest */
+#debugExportBtn, #fullscreenBtn { z-index: 2000 !important; }
+#hud { z-index: 1500 !important; }
+#touchControls { z-index: 500 !important; }
+canvas { z-index: 1 !important; }
+
+/* Game area positioning in fullscreen ensures UI elements are contained */
+:fullscreen #gameArea,
+:-webkit-full-screen #gameArea,
+:-moz-full-screen #gameArea,
+:-ms-fullscreen #gameArea {
+  position: relative; /* Ensure absolute positioned children are contained */
+  overflow: hidden; /* Prevent any UI overflow */
+}
+
+
+/* Enforce landscape-only UI via CSS fallback (in addition to JS checkOrientation) */
+@media (orientation: portrait) {
+  #gameArea { display: none !important; }
+  #touchControls { display: none !important; }
+  #hud { display: none !important; }
+  #buildInfo { display: none !important; }
+  #orientationMessage { display: flex !important; }
+}
+
+@media (orientation: landscape) {
+  #orientationMessage { display: none !important; }
+}
+
+/* Improve touch circle responsiveness */
+.touchCircle { touch-action: none; }
+.touchCircle .touchCenter { transition: transform 0.06s linear; }
+
+/* Ensure touch controls sit above canvas but below HUD/buttons */
+#touchControls { z-index: 900 !important; }
+#hud { z-index: 1000 !important; }
+#debugExportBtn, #fullscreenBtn { z-index: 1100 !important; }
+
+/* Clarify mobile-only joystick visibility in landscape */
+@media (max-width: 768px) and (orientation: landscape) {
+  #touchControls.touch-only { display: block !important; }
+} 
+
+/* Ensure mobile buttons receive input even under #touchControls */
+#touchControls .mobile-button-group { 
+  pointer-events: none !important; /* Container doesn't block */
+}
+#touchControls .mobileBtn { 
+  pointer-events: auto !important; /* But buttons are clickable */
+}
+
+/* Menu button specific styling to ensure visibility */
+#btnMenu {
+  background: rgba(255, 255, 0, 0.3) !important;
+  border-color: rgba(255, 255, 0, 0.8) !important;
+  color: #ffff00 !important;
+}
+
+#btnMenu:active {
+  background: rgba(255, 255, 0, 0.5) !important;
+  transform: scale(0.95);
+}
+.arcBtn {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background: rgba(0, 255, 255, 0.25);
+  border: 2px solid rgba(0, 255, 255, 0.8);
+  color: #00ffff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  pointer-events: auto;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.arcBtn:active { transform: scale(0.95); background: rgba(0,255,255,0.35); }
+.arcBtn--primary { background: rgba(0, 255, 170, 0.3); border-color: rgba(0, 255, 170, 0.9); }
+.arcBtn--accent { background: rgba(255, 255, 0, 0.25); border-color: rgba(255, 255, 0, 0.8); color: #ffff99; }
+
+/* On small screens scale arc buttons slightly */
+@media (max-width: 480px) {
+  .arcBtn { width: 40px; height: 40px; font-size: 16px; border-radius: 20px; }
+} 
+
+.cameraRotateBtn, .arcBtn, .touchCircle, .touchCenter {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+} 
+
+#leftCircle, #rightCircle { position: absolute; } 
+
+/* Auto-center knob when inactive via class removal already handled; ensure transform resets */
+.touchCircle:not(.active) .touchCenter { transform: translate(-50%, -50%) !important; }
+
+/* Visual viewport scale compensation: position touchControls relative to visual viewport top-left */
+@supports (height: 100svh) {
+  #touchControls { top: 0; left: 0; width: 100vw; height: 100svh; }
+} 
+
+#hudCompass {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.compass-ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #00ffff;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(0,255,255,0.1) 0%, 
+    rgba(0,128,255,0.05) 30%, 
+    rgba(0,20,40,0.8) 60%, 
+    rgba(0,0,0,0.9) 100%);
+  box-shadow: 
+    0 0 15px rgba(0,255,255,0.4), 
+    inset 0 0 10px rgba(0,128,255,0.2),
+    inset 0 0 20px rgba(0,0,0,0.5);
+  transition: transform 0.1s ease-out;
+}
+
+.compass-needle {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  width: 2px;
+  height: 38%;
+  background: linear-gradient(to bottom, #ff4444 0%, #ff4444 50%, #ffffff 50%, #ffffff 100%);
+  transform: translateX(-50%);
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(255,68,68,0.8);
+  z-index: 10;
+}
+
+.compass-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: #00ffff;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(0,255,255,0.9);
+  z-index: 15;
+}
+
+.compass-cardinal {
+  position: absolute;
+  color: #00ffff;
+  font: bold 10px monospace;
+  text-shadow: 0 0 3px rgba(0,255,255,0.8), 0 0 2px #000000;
+  z-index: 12;
+  transform: translate(-50%, -50%);
+}
+
+.compass-n {
+  top: 5px;
+  left: 50%;
+}
+
+.compass-e {
+  top: 50%;
+  right: 5px;
+  transform: translate(50%, -50%);
+}
+
+.compass-s {
+  bottom: 5px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.compass-w {
+  top: 50%;
+  left: 5px;
+  transform: translate(-50%, -50%);
+}
+
+.compass-icon {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #00ffff;
+  background: rgba(0,255,255,0.3);
+  z-index: 11;
+  transition: all 0.2s ease;
+}
+
+.compass-icon.city-icon {
+  border-radius: 2px;
+  box-shadow: 0 0 4px currentColor;
+}
+
+.compass-icon.shop-icon {
+  background: #ffaa00;
+  border-color: #ffaa00;
+  color: #000000;
+  font: bold 6px monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: none;
+  box-shadow: 0 0 6px rgba(255,170,0,0.8);
+}
+
+.compass-icon:hover {
+  transform: scale(1.2);
+  z-index: 13;
+}
+
+@media (max-width: 768px) {
+  #hudCompass { 
+    width: 100px; 
+    height: 100px; 
+    top: 5px;
+    right: 5px;
+  }
+  
+  .compass-cardinal {
+    font-size: 12px;
+  }
+  
+  .compass-icon {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .compass-icon.shop-icon {
+    font-size: 8px;
+  }
+} 

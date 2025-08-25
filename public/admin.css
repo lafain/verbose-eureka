@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #000;
+  font-family: "Segoe UI", sans-serif;
+  color: #00FFFF;
+}
+
+.container {
+  border: 2px solid #00FFFF;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+  background: #111;
+  border: 1px solid #00FFFF;
+  color: #00FFFF;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  background: #00FFFF;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.mapServerRow { margin: 4px 0; }
+.mapServerRow input { width: 360px; } 

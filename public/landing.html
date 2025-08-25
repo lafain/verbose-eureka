@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAILURE_TO_DIE - Welcome</title>
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <div class="container">
+    <h1>FAILURE_TO_DIE</h1>
+    <div class="tabs">
+      <button id="loginTab" class="active">Login</button>
+      <button id="registerTab">Register</button>
+    </div>
+    <form id="loginForm" class="form active">
+      <input type="text" id="loginUser" placeholder="Username" required>
+      <input type="password" id="loginPass" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <form id="registerForm" class="form">
+      <input type="text" id="regUser" placeholder="Username" required>
+      <input type="password" id="regPass" placeholder="Password" required>
+      <button type="submit">Register</button>
+    </form>
+    <div class="divider">or</div>
+    <button id="guestBtn" class="guest">Continue as Guest</button>
+  </div>
+  <script src="landing.js"></script>
+</body>
+</html> 

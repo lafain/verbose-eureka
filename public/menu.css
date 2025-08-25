@@ -1,0 +1,984 @@
+/* Menu System Styles */
+.game-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    max-width: 1000px;
+    height: 85%;
+    max-height: 700px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Courier New', monospace;
+    color: #00ffff;
+}
+
+/* Ensure menu displays properly in fullscreen mode */
+:fullscreen .game-menu,
+:-webkit-full-screen .game-menu,
+:-moz-full-screen .game-menu,
+:-ms-fullscreen .game-menu {
+    position: fixed;
+    z-index: 10001; /* Higher z-index in fullscreen */
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.game-menu.hidden {
+    display: none;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+    min-height: 80px; /* Accommodate two-layer tabs */
+}
+
+/* Two-layer tab structure */
+.menu-tab-layers {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.menu-layer {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.primary-layer {
+    justify-content: flex-start;
+}
+
+.secondary-layer {
+    justify-content: flex-start;
+}
+
+/* Layer tabs (primary level) */
+.layer-tab {
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+.layer-tab:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+.layer-tab.active {
+    background: rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.7);
+    text-shadow: 0 0 3px #00ffff;
+}
+
+/* Secondary tabs (specific tabs within layer) */
+.menu-tab {
+    padding: 4px 8px;
+    background: transparent;
+    border: 1px solid #00aaaa;
+    color: #00aaaa;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+.menu-tab:hover {
+    background: rgba(0, 170, 170, 0.2);
+    box-shadow: 0 0 6px rgba(0, 170, 170, 0.5);
+    color: #00ffff;
+    border-color: #00ffff;
+}
+
+.menu-tab.active {
+    background: rgba(0, 170, 170, 0.3);
+    box-shadow: 0 0 10px rgba(0, 170, 170, 0.7);
+    text-shadow: 0 0 3px #00aaaa;
+    color: #ffffff;
+    border-color: #00ffff;
+}
+
+.menu-close {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.menu-close:hover {
+    background: rgba(255, 0, 0, 0.3);
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+/* Scrollable content wrapper */
+.menu-content-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.menu-content {
+    height: 100%;
+    overflow: auto;
+    padding: 15px;
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: #00ffff rgba(0, 0, 0, 0.3);
+}
+
+.menu-content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.menu-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.menu-content::-webkit-scrollbar-thumb {
+    background: #00ffff;
+    border-radius: 4px;
+}
+
+.menu-content::-webkit-scrollbar-thumb:hover {
+    background: #00aaaa;
+}
+
+.menu-content::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.tab-content {
+    animation: fadeIn 0.3s;
+    min-height: 100%;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+/* Inventory Tab */
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.weight-display {
+    color: #ffff00;
+    font-size: 16px;
+}
+
+.inventory-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.inventory-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    transition: all 0.3s;
+}
+
+.inventory-item:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00ffff;
+}
+
+.inventory-item.equipped {
+    border-color: #00ff00;
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.item-name {
+    flex: 1;
+}
+
+.item-count {
+    margin: 0 20px;
+    color: #ffff00;
+}
+
+.item-weight {
+    color: #ff00ff;
+}
+
+.equipped-badge {
+    margin-left: 10px;
+    padding: 2px 8px;
+    background: #00ff00;
+    color: #000;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+/* Equipment Tab */
+.equipment-container {
+    display: flex;
+    gap: 30px;
+}
+
+.character-outline {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 300px;
+}
+
+.equipment-slot {
+    width: 140px;
+    height: 140px;
+    border: 2px solid #00ffff;
+    background: rgba(0, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.equipment-slot.drag-over {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.slot-label {
+    font-size: 12px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.slot-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.equipped-item {
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.equipable-items {
+    flex: 1;
+}
+
+.equipment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.equipable-item {
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    cursor: move;
+    transition: all 0.3s;
+}
+
+.equipable-item:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00ffff;
+}
+
+.equipable-item.dragging {
+    opacity: 0.5;
+}
+
+/* Character Tab */
+.character-info {
+    max-width: 500px;
+}
+
+.character-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.character-name input {
+    flex: 1;
+    padding: 5px 10px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    font-family: inherit;
+}
+
+.character-level {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #ffff00;
+}
+
+.character-experience {
+    margin: 15px 0;
+}
+
+.xp-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00ffff, #00ff00);
+    transition: width 0.5s;
+}
+
+.upgrade-points {
+    font-size: 16px;
+    color: #ff00ff;
+    margin: 10px 0;
+}
+
+.character-stats {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.character-customization {
+    margin: 20px 0;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-picker input[type="color"] {
+    width: 50px;
+    height: 30px;
+    border: 1px solid #00ffff;
+    background: transparent;
+    cursor: pointer;
+}
+
+.account-section {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 0, 0.05);
+    border: 1px solid rgba(255, 255, 0, 0.3);
+}
+
+#register-account {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: rgba(0, 255, 0, 0.2);
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#register-account:hover {
+    background: rgba(0, 255, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Expansion Tab */
+.expansion-tree {
+    text-align: center;
+}
+
+.tree-container {
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(255, 0, 255, 0.05);
+    border: 2px dashed rgba(255, 0, 255, 0.3);
+    color: #ff00ff;
+}
+
+/* Settings Tab */
+.settings-container {
+    max-width: 500px;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.setting-item label {
+    flex: 1;
+}
+
+.setting-item input[type="range"] {
+    width: 200px;
+}
+
+.setting-item select {
+    padding: 5px 10px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    font-family: inherit;
+}
+
+/* Controls Tab */
+.controls-container {
+    max-width: 600px;
+}
+
+.controls-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.control-action {
+    flex: 1;
+}
+
+.control-key {
+    padding: 5px 15px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 100px;
+    text-align: center;
+}
+
+.control-key:hover {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+.control-key.rebinding {
+    background: rgba(255, 255, 0, 0.2);
+    border-color: #ffff00;
+    color: #ffff00;
+    animation: pulse 1s infinite;
+}
+
+.control-hint {
+    margin-top: 20px;
+    text-align: center;
+    opacity: 0.7;
+    font-style: italic;
+}
+
+.mobile-controls-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.control-info {
+    padding: 15px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.control-info h4 {
+    margin: 0 0 10px 0;
+    color: #ffff00;
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 0.3s;
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+/* Registration Overlay */
+.registration-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 11000;
+}
+
+.registration-form {
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid #00ffff;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 300px;
+}
+
+.registration-form input {
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    font-family: inherit;
+}
+
+.registration-form button {
+    padding: 10px;
+    background: rgba(0, 255, 255, 0.2);
+    border: 1px solid #00ffff;
+    color: #00ffff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.registration-form button:hover {
+    background: rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* Notifications */
+.menu-notification {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 30px;
+    background: rgba(0, 255, 0, 0.9);
+    color: #000;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 12000;
+    animation: slideDown 0.3s;
+}
+
+.menu-notification.fade-out {
+    animation: fadeOut 0.5s;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideDown {
+    from { 
+        top: -50px;
+        opacity: 0;
+    }
+    to { 
+        top: 50px;
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Scrollbar styling */
+.menu-content ::-webkit-scrollbar {
+    width: 8px;
+}
+
+.menu-content ::-webkit-scrollbar-track {
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.menu-content ::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.5);
+    border-radius: 4px;
+}
+
+.menu-content ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 255, 0.7);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .game-menu {
+        width: 98%;
+        height: 90%;
+        max-width: none;
+        max-height: none;
+    }
+    
+    .menu-header {
+        padding: 6px 8px;
+        min-height: 70px;
+    }
+    
+    .layer-tab {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    
+    .menu-tab {
+        padding: 3px 6px;
+        font-size: 9px;
+    }
+    
+    .equipment-container {
+        flex-direction: column;
+    }
+    
+    .character-outline {
+        width: 100%;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .equipment-slot {
+        width: 100%;
+        height: 100px;
+    }
+    
+    .menu-content {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        min-height: 90px;
+    }
+    
+    .menu-tab-layers {
+        order: 1;
+    }
+    
+    .menu-close {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+    }
+}
+
+/* Map Tab Styles */
+.map-container {
+    padding: 20px;
+    color: #00ffff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.map-container h3 {
+    margin: 0 0 15px 0;
+    text-align: center;
+    color: #00ffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.map-canvas {
+    border: 2px solid #00ffff;
+    border-radius: 8px;
+    margin: 20px 0;
+    background: #000022;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    min-height: 400px;
+    position: relative;
+}
+
+#world-map {
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+
+.map-legend {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    border: 1px solid #00ffff;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.legend-icon {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.player-icon {
+    background: #ff0000;
+}
+
+.city-icon {
+    background: #00ffff;
+}
+
+.spawn-icon {
+    background: #00ff00;
+}
+
+.road-icon {
+    background: #00ffff;
+} 
+
+/* Blueprints tab */
+#blueprints-tab{ padding:10px; color:#00ffff; font-family: monospace; }
+#blueprint-grid{ display:flex; flex-direction: column; gap:8px; margin-top:12px; max-height:220px; overflow-y:auto; padding-right:6px; }
+#blueprint-grid .bp-item{ padding:6px 10px; border:1px solid #00ffff; background: rgba(0,255,255,0.05); color:#00ffff; cursor:pointer; border-radius:4px; text-align:left; }
+#blueprint-grid .bp-item.active{ background: rgba(0,255,255,0.2); box-shadow: 0 0 10px rgba(0,255,255,0.3); }
+#blueprint-preview{ border:1px solid #00ffff; padding:10px; background: rgba(0,0,0,0.5); }
+#blueprint-preview .bp-title{ font-weight:bold; margin-bottom:4px; }
+#blueprint-preview .bp-desc{ opacity:0.9; margin-bottom:6px; }
+#blueprint-preview .bp-costs{ margin-top:6px; } 
+
+/* Mobile-specific menu styles */
+@media (max-width: 768px), (pointer: coarse) {
+    .game-menu {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        border-radius: 0;
+        top: 0;
+        left: 0;
+        transform: none;
+        position: fixed !important;
+        z-index: 10000 !important;
+    }
+    
+    /* Fullscreen mobile adjustments */
+    :fullscreen .game-menu,
+    :-webkit-full-screen .game-menu,
+    :-moz-full-screen .game-menu,
+    :-ms-fullscreen .game-menu {
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        transform: none;
+        z-index: 10001 !important;
+    }
+    
+    .menu-header {
+        min-height: auto;
+        padding: 10px;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .menu-tab-layers {
+        width: 100%;
+    }
+    
+    .menu-layer {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .layer-tab {
+        padding: 8px 12px;
+        font-size: 14px;
+        min-width: 80px;
+        text-align: center;
+    }
+    
+    .menu-tab {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 60px;
+    }
+    
+    #menu-summary {
+        font-size: 10px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .menu-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 28px;
+    }
+    
+    .menu-content {
+        padding: 15px;
+        font-size: 14px;
+    }
+    
+    /* Touch-friendly item interactions */
+    .inventory-item,
+    .friend-item,
+    .skill-node,
+    .build-item,
+    .craft-item {
+        min-height: 50px;
+        padding: 12px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .inventory-item:active,
+    .friend-item:active,
+    .skill-node:active {
+        transform: scale(0.98);
+        background: rgba(0, 255, 255, 0.2);
+    }
+    
+    /* Larger buttons for mobile */
+    button, .button, .btn {
+        min-height: 44px;
+        min-width: 44px;
+        font-size: 14px;
+    }
+    
+    /* Better spacing for mobile */
+    .tab-content {
+        padding: 10px;
+    }
+    
+    .inventory-list,
+    .friends-list,
+    .chat-messages {
+        max-height: calc(100vh - 250px);
+    }
+    
+    /* Mobile-optimized grid layouts */
+    .skill-tree,
+    .equipment-container {
+        flex-direction: column;
+    }
+    
+    .character-outline {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Ensure menu is above all mobile UI */
+    .game-menu {
+        z-index: 30000;
+    }
+}
+
+/* Landscape mobile adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .menu-header {
+        min-height: 60px;
+        flex-direction: row;
+    }
+    
+    .menu-tab-layers {
+        flex-direction: row;
+        gap: 10px;
+    }
+    
+    .menu-layer {
+        flex-direction: row;
+    }
+    
+    .menu-content {
+        max-height: calc(100vh - 100px);
+    }
+} 
