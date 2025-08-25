@@ -1,0 +1,6 @@
+#!/usr/bin/expect -f
+set timeout 30
+spawn ssh -o StrictHostKeyChecking=no root@178.156.186.132
+expect "password:"
+send "jhcs2bkbH4uf75OP\r"
+interact

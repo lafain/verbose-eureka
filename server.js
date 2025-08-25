@@ -181,6 +181,11 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'landing.html'));
 });
 
+// Character creation page
+app.get('/character-creation.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'character-creation.html'));
+});
+
 // Game page - serve the game
 app.get('/ftd', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
