@@ -794,6 +794,9 @@ const menuSystem = {
         
         // Setup craft system
         this.setupCraftSystem();
+        
+        // Setup fullscreen change listeners
+        this.setupFullscreenListeners();
     },
     
     setupSettingsListeners() {
@@ -1315,6 +1318,11 @@ const menuSystem = {
         if (menu) {
             menu.classList.toggle('hidden', !this.isOpen);
             
+            // Handle fullscreen positioning
+            if (this.isOpen) {
+                this.ensureFullscreenVisibility();
+            }
+            
             // Handle map refresh
             if (this.isOpen && this.activeTab === 'map') {
                 this.startMapRefresh();
@@ -1338,6 +1346,44 @@ const menuSystem = {
         // Pause/resume game
         if (window.gameState) {
             window.gameState.paused = this.isOpen;
+        }
+    },
+
+    ensureFullscreenVisibility() {
+        const menu = document.getElementById('gameMenu');
+        if (!menu) return;
+        
+        // Check if we're in fullscreen mode
+        const isFullscreen = !!(document.fullscreenElement || 
+                               document.webkitFullscreenElement || 
+                               document.mozFullScreenElement || 
+                               document.msFullscreenElement);
+        
+        if (isFullscreen) {
+            // Force menu to be visible and properly positioned in fullscreen
+            menu.style.position = 'fixed';
+            menu.style.zIndex = '99999';
+            menu.style.top = '50%';
+            menu.style.left = '50%';
+            menu.style.transform = 'translate(-50%, -50%)';
+            menu.style.width = '95vw';
+            menu.style.height = '90vh';
+            menu.style.maxWidth = '1200px';
+            menu.style.maxHeight = '800px';
+            menu.style.display = 'flex';
+            
+            // Ensure menu content is scrollable
+            const content = menu.querySelector('.menu-content');
+            if (content) {
+                content.style.overflow = 'auto';
+                content.style.maxHeight = 'calc(100% - 120px)';
+            }
+            
+            // Make sure header is visible
+            const header = menu.querySelector('.menu-header');
+            if (header) {
+                header.style.flexShrink = '0';
+            }
         }
     },
 
@@ -2071,6 +2117,27 @@ const menuSystem = {
         } else {
             this.showNotification(`Crafting ${recipe} - system not available`);
         }
+    },
+    
+    setupFullscreenListeners() {
+        // Listen for fullscreen changes
+        const fullscreenEvents = [
+            'fullscreenchange',
+            'webkitfullscreenchange', 
+            'mozfullscreenchange',
+            'MSFullscreenChange'
+        ];
+        
+        fullscreenEvents.forEach(event => {
+            document.addEventListener(event, () => {
+                if (this.isOpen) {
+                    // Small delay to ensure fullscreen transition is complete
+                    setTimeout(() => {
+                        this.ensureFullscreenVisibility();
+                    }, 100);
+                }
+            });
+        });
     }
 };
 
