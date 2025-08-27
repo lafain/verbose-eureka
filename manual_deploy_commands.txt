@@ -1,0 +1,39 @@
+# Manual Deployment Commands for Server 178.156.186.132
+# Password: jhcs2bkbH4uf75OP
+
+# Step 1: Connect to server
+ssh root@178.156.186.132
+
+# Step 2: Navigate to web directory and backup
+cd /var/www/html/public
+cp menu.js menu.js.backup.$(date +%Y%m%d_%H%M%S) 2>/dev/null || echo "No existing menu.js"
+cp menu.css menu.css.backup.$(date +%Y%m%d_%H%M%S) 2>/dev/null || echo "No existing menu.css"
+
+# Step 3: Create temporary upload directory
+mkdir -p /tmp/menu_upload
+
+# Step 4: Exit SSH and upload files from local machine
+exit
+
+# Upload files (run these from the workspace directory)
+scp public/menu.js root@178.156.186.132:/tmp/menu_upload/
+scp public/menu.css root@178.156.186.132:/tmp/menu_upload/
+
+# Step 5: Reconnect and move files to final location
+ssh root@178.156.186.132
+cd /tmp/menu_upload
+cp menu.js /var/www/html/public/
+cp menu.css /var/www/html/public/
+chown www-data:www-data /var/www/html/public/menu.js /var/www/html/public/menu.css 2>/dev/null || echo "Owner change may not be needed"
+
+# Step 6: Verify deployment
+cd /var/www/html/public
+ls -la menu.js menu.css
+
+# Step 7: Restart web server
+systemctl restart nginx || systemctl restart apache2 || echo "Manual web server restart may be needed"
+
+# Step 8: Clean up
+rm -rf /tmp/menu_upload
+
+echo "Deployment completed successfully!"

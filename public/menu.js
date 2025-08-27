@@ -3,15 +3,15 @@ const menuSystem = {
     isOpen: false,
     activeTab: 'inventory',
     activeLayer: 'character', // Track which layer is active
-    // Reorganized tabs optimized for mobile and keyboard
+    // Reorganized tabs optimized for mobile and keyboard with icons
     tabLayers: {
-        character: ['inventory', 'equipment', 'skills'],
+        character: ['inventory', 'equipment', 'skills', 'craft'],
         social: ['friends', 'chat', 'trade'],
         world: ['map', 'blueprints', 'stats'],
         system: ['settings', 'controls', 'help']
     },
     // Legacy tabs array for compatibility
-    tabs: ['inventory', 'equipment', 'skills', 'friends', 'chat', 'trade', 'map', 'blueprints', 'stats', 'settings', 'controls', 'help'],
+    tabs: ['inventory', 'equipment', 'skills', 'craft', 'friends', 'chat', 'trade', 'map', 'blueprints', 'stats', 'settings', 'controls', 'help'],
     mapRefreshInterval: null,
     
     // Player data
@@ -216,12 +216,12 @@ const menuSystem = {
                         </div>
                     </div>
                     <div style="display:flex;align-items:center;gap:10px;">
-                      <div id="menu-summary" style="display:flex;gap:8px;align-items:center;font:11px monospace;opacity:0.9;">
-                        <span id="sum-level" title="Level">Lv 1</span>
-                        <span id="sum-xp" title="XP">0/100</span>
-                        <span id="sum-int" title="Integrity">INT 100/100</span>
-                        <span id="sum-chg" title="Charge">CHG 100/100</span>
-                        <span id="sum-weight" title="Weight">W 0/500</span>
+                      <div id="menu-summary" style="display:flex;gap:6px;align-items:center;font:10px monospace;opacity:0.9;flex-wrap:wrap;">
+                        <span id="sum-level" title="Level" style="color:#ffff00;">⭐ Lv 1</span>
+                        <span id="sum-xp" title="Experience" style="color:#00ff00;">📈 0/100</span>
+                        <span id="sum-int" title="Integrity" style="color:#ff6666;">❤️ 100/100</span>
+                        <span id="sum-chg" title="Charge" style="color:#00aaff;">⚡ 100/100</span>
+                        <span id="sum-weight" title="Weight" style="color:#ffaa00;">📦 0/500</span>
                       </div>
                       <div id="menu-credits" style="color:#ffff88;font:12px monospace;margin-right:8px;">Credits: ...</div>
                     </div>
@@ -395,9 +395,77 @@ const menuSystem = {
                         </div>
                     </div>
                     
-                    <!-- Expansion/Crafting Tab -->
-                    <div class="tab-content hidden" id="expansion-tab">
-                        <div id="crafting-section"></div>
+                    <!-- Craft Tab -->
+                    <div class="tab-content hidden" id="craft-tab">
+                        <div class="craft-container">
+                            <h3>🔧 Crafting System</h3>
+                            <div class="craft-categories">
+                                <div class="craft-category">
+                                    <h4>⚔️ Weapons</h4>
+                                    <div class="craft-grid">
+                                        <div class="craft-item" data-recipe="upgradeEnergy">
+                                            <div class="craft-icon">⚡</div>
+                                            <div class="craft-info">
+                                                <div class="craft-name">Energy Weapon</div>
+                                                <div class="craft-cost">Cost: 10 Hex-Dust</div>
+                                            </div>
+                                        </div>
+                                        <div class="craft-item" data-recipe="upgradePlasma">
+                                            <div class="craft-icon">🔥</div>
+                                            <div class="craft-info">
+                                                <div class="craft-name">Plasma Cannon</div>
+                                                <div class="craft-cost">Cost: 15 Lumin-Grain</div>
+                                            </div>
+                                        </div>
+                                        <div class="craft-item" data-recipe="upgradeVoid">
+                                            <div class="craft-icon">🌌</div>
+                                            <div class="craft-info">
+                                                <div class="craft-name">Void Rifle</div>
+                                                <div class="craft-cost">Cost: 20 Void-Residue</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="craft-category">
+                                    <h4>🛡️ Equipment</h4>
+                                    <div class="craft-grid">
+                                        <div class="craft-item" data-recipe="armorPlating">
+                                            <div class="craft-icon">🛡️</div>
+                                            <div class="craft-info">
+                                                <div class="craft-name">Armor Plating</div>
+                                                <div class="craft-cost">Cost: 8 Hex-Dust</div>
+                                            </div>
+                                        </div>
+                                        <div class="craft-item" data-recipe="chargeCapacitor">
+                                            <div class="craft-icon">🔋</div>
+                                            <div class="craft-info">
+                                                <div class="craft-name">Charge Capacitor</div>
+                                                <div class="craft-cost">Cost: 12 Lumin-Grain</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="craft-category">
+                                    <h4>💊 Consumables</h4>
+                                    <div class="craft-grid">
+                                        <div class="craft-item" data-recipe="healingPack">
+                                            <div class="craft-icon">💊</div>
+                                            <div class="craft-info">
+                                                <div class="craft-name">Healing Pack</div>
+                                                <div class="craft-cost">Cost: 5 Hex-Dust</div>
+                                            </div>
+                                        </div>
+                                        <div class="craft-item" data-recipe="chargeCell">
+                                            <div class="craft-icon">⚡</div>
+                                            <div class="craft-info">
+                                                <div class="craft-name">Charge Cell</div>
+                                                <div class="craft-cost">Cost: 6 Lumin-Grain</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
                     <!-- Settings Tab -->
@@ -462,28 +530,66 @@ const menuSystem = {
                     
                     <!-- Help Tab -->
                     <div class="tab-content hidden" id="help-tab">
-                        <h3>Game Help</h3>
-                        <div style="max-height:400px; overflow:auto;">
-                            <h4>Controls</h4>
-                            <p>Movement: WASD keys<br>
-                            Sprint: Hold Shift<br>
-                            Interact: F key<br>
-                            Build Mode: B key<br>
-                            Open Menu: Tab key<br>
-                            Rotate Camera: Q/E keys</p>
-                            
-                            <h4>Gameplay Tips</h4>
-                            <p>• Cities are safe zones - enemies cannot spawn there<br>
-                            • Build defenses to protect your territory<br>
-                            • Trade with other players for better equipment<br>
-                            • Gather resources to craft items and buildings<br>
-                            • Level up to unlock new skills and abilities</p>
-                            
-                            <h4>Mobile Controls</h4>
-                            <p>• Use the left joystick to move<br>
-                            • Tap buttons on the right for actions<br>
-                            • Hold the sprint button to move faster<br>
-                            • Use camera rotation buttons to look around</p>
+                        <div class="help-container">
+                            <h3>❓ Game Help & Controls</h3>
+                            <div class="help-sections">
+                                <div class="help-section">
+                                    <h4>🎮 Desktop Controls</h4>
+                                    <div class="control-grid">
+                                        <div class="control-row"><span class="key">WASD</span> Movement</div>
+                                        <div class="control-row"><span class="key">Shift</span> Sprint</div>
+                                        <div class="control-row"><span class="key">F</span> Interact</div>
+                                        <div class="control-row"><span class="key">B</span> Build Mode</div>
+                                        <div class="control-row"><span class="key">C</span> Craft Menu</div>
+                                        <div class="control-row"><span class="key">Tab</span> Open Menu</div>
+                                        <div class="control-row"><span class="key">Q/E</span> Rotate Camera</div>
+                                        <div class="control-row"><span class="key">Space</span> Fire Weapon</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="help-section">
+                                    <h4>⌨️ Menu Shortcuts</h4>
+                                    <div class="control-grid">
+                                        <div class="control-row"><span class="key">1</span> 🎒 Inventory</div>
+                                        <div class="control-row"><span class="key">2</span> ⚔️ Equipment</div>
+                                        <div class="control-row"><span class="key">3</span> 🌟 Skills</div>
+                                        <div class="control-row"><span class="key">4</span> 🔧 Craft</div>
+                                        <div class="control-row"><span class="key">5</span> 👥 Friends</div>
+                                        <div class="control-row"><span class="key">6</span> 💬 Chat</div>
+                                        <div class="control-row"><span class="key">7</span> 🗺️ Map</div>
+                                        <div class="control-row"><span class="key">8</span> 🏗️ Build</div>
+                                        <div class="control-row"><span class="key">9</span> ⚙️ Settings</div>
+                                        <div class="control-row"><span class="key">0</span> ❓ Help</div>
+                                        <div class="control-row"><span class="key">Esc</span> Close Menu</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="help-section">
+                                    <h4>📱 Mobile Controls</h4>
+                                    <div class="mobile-help">
+                                        <p>• Left joystick: Movement</p>
+                                        <p>• Right buttons: Actions</p>
+                                        <p>• ⚡ Sprint button: Hold to run</p>
+                                        <p>• 🔨 Build button: Enter build mode</p>
+                                        <p>• ☰ Menu button: Open main menu</p>
+                                        <p>• Camera buttons: Rotate view</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="help-section">
+                                    <h4>🎯 Gameplay Tips</h4>
+                                    <div class="tips-list">
+                                        <p>🏙️ Cities are safe zones - no enemy spawns</p>
+                                        <p>🛡️ Build defenses to protect territory</p>
+                                        <p>💰 Trade with players for better gear</p>
+                                        <p>💎 Gather resources to craft items</p>
+                                        <p>⭐ Level up to unlock new skills</p>
+                                        <p>🔧 Use crafting to upgrade equipment</p>
+                                        <p>🗺️ Explore the world map for cities</p>
+                                        <p>👥 Team up with friends for safety</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                      </div>
@@ -499,30 +605,44 @@ const menuSystem = {
     
     getLayerDisplayName(layer) {
         const layerNames = {
-            character: 'CHARACTER',
-            social: 'SOCIAL',
-            world: 'WORLD',
-            system: 'SYSTEM'
+            character: '👤 CHAR',
+            social: '👥 SOCIAL',
+            world: '🌍 WORLD',
+            system: '⚙️ SYS'
         };
         return layerNames[layer] || layer.toUpperCase();
     },
 
     getTabDisplayName(tab) {
         const tabNames = {
-            inventory: 'INV',
-            equipment: 'EQUIP',
-            skills: 'SKILLS',
-            friends: 'FRIENDS',
-            chat: 'CHAT',
-            trade: 'TRADE',
-            map: 'MAP',
-            blueprints: 'BUILD',
-            stats: 'STATS',
-            settings: 'SET',
-            controls: 'CTRL',
-            help: 'HELP'
+            inventory: '🎒 INV',
+            equipment: '⚔️ GEAR',
+            skills: '🌟 SKILL',
+            craft: '🔧 CRAFT',
+            friends: '👥 FRND',
+            chat: '💬 CHAT',
+            trade: '💰 TRADE',
+            map: '🗺️ MAP',
+            blueprints: '🏗️ BUILD',
+            stats: '📊 STATS',
+            settings: '⚙️ SET',
+            controls: '🎮 CTRL',
+            help: '❓ HELP'
         };
         return tabNames[tab] || tab.toUpperCase();
+    },
+    
+    getItemIcon(type) {
+        const icons = {
+            weapon: '⚔️',
+            armor: '🛡️',
+            utility: '🔧',
+            material: '💎',
+            consumable: '💊',
+            tool: '🔨',
+            resource: '📦'
+        };
+        return icons[type] || '📄';
     },
     
     getDesktopControlsHTML() {
@@ -571,13 +691,30 @@ const menuSystem = {
     },
     
     setupEventListeners() {
-        // Tab key for keyboard
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Tab') {
-                    e.preventDefault();
-                    this.toggle();
+        // Enhanced keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                this.toggle();
+            }
+            
+            // Quick tab shortcuts when menu is open
+            if (this.isOpen && !e.ctrlKey && !e.altKey) {
+                switch(e.key) {
+                    case '1': this.switchTab('inventory'); e.preventDefault(); break;
+                    case '2': this.switchTab('equipment'); e.preventDefault(); break;
+                    case '3': this.switchTab('skills'); e.preventDefault(); break;
+                    case '4': this.switchTab('craft'); e.preventDefault(); break;
+                    case '5': this.switchTab('friends'); e.preventDefault(); break;
+                    case '6': this.switchTab('chat'); e.preventDefault(); break;
+                    case '7': this.switchTab('map'); e.preventDefault(); break;
+                    case '8': this.switchTab('blueprints'); e.preventDefault(); break;
+                    case '9': this.switchTab('settings'); e.preventDefault(); break;
+                    case '0': this.switchTab('help'); e.preventDefault(); break;
+                    case 'Escape': this.closeMenu(); e.preventDefault(); break;
                 }
-            });
+            }
+        });
         
         // Mobile menu button (from our new mobile UI)
         const mobileMenuBtn = document.getElementById('btnMenu');
@@ -654,6 +791,12 @@ const menuSystem = {
         
         // Drag and drop for equipment
         this.setupDragAndDrop();
+        
+        // Setup craft system
+        this.setupCraftSystem();
+        
+        // Setup fullscreen change listeners
+        this.setupFullscreenListeners();
     },
     
     setupSettingsListeners() {
@@ -793,14 +936,17 @@ const menuSystem = {
         document.getElementById('max-weight').textContent = this.playerData.maxWeight;
         
         // Update inventory list
-        inventoryList.innerHTML = this.playerData.inventory.map(item => `
+        inventoryList.innerHTML = this.playerData.inventory.map(item => {
+            const typeIcon = this.getItemIcon(item.type);
+            return `
             <div class="inventory-item ${item.equipped ? 'equipped' : ''}" data-item-id="${item.id}">
+                <span class="item-icon">${typeIcon}</span>
                 <span class="item-name">${item.name}</span>
-                <span class="item-count">x${item.count}</span>
-                <span class="item-weight">${(item.weight * item.count).toFixed(1)} kg</span>
-                ${item.equipped ? '<span class="equipped-badge">EQUIPPED</span>' : ''}
+                <span class="item-count">×${item.count}</span>
+                <span class="item-weight">📦 ${(item.weight * item.count).toFixed(1)}kg</span>
+                ${item.equipped ? '<span class="equipped-badge">⚔️ EQUIPPED</span>' : ''}
             </div>
-        `).join('');
+        `}).join('');
         
         // Update equipment list
         this.updateEquipmentList();
@@ -1172,6 +1318,11 @@ const menuSystem = {
         if (menu) {
             menu.classList.toggle('hidden', !this.isOpen);
             
+            // Handle fullscreen positioning
+            if (this.isOpen) {
+                this.ensureFullscreenVisibility();
+            }
+            
             // Handle map refresh
             if (this.isOpen && this.activeTab === 'map') {
                 this.startMapRefresh();
@@ -1195,6 +1346,44 @@ const menuSystem = {
         // Pause/resume game
         if (window.gameState) {
             window.gameState.paused = this.isOpen;
+        }
+    },
+
+    ensureFullscreenVisibility() {
+        const menu = document.getElementById('gameMenu');
+        if (!menu) return;
+        
+        // Check if we're in fullscreen mode
+        const isFullscreen = !!(document.fullscreenElement || 
+                               document.webkitFullscreenElement || 
+                               document.mozFullScreenElement || 
+                               document.msFullscreenElement);
+        
+        if (isFullscreen) {
+            // Force menu to be visible and properly positioned in fullscreen
+            menu.style.position = 'fixed';
+            menu.style.zIndex = '99999';
+            menu.style.top = '50%';
+            menu.style.left = '50%';
+            menu.style.transform = 'translate(-50%, -50%)';
+            menu.style.width = '95vw';
+            menu.style.height = '90vh';
+            menu.style.maxWidth = '1200px';
+            menu.style.maxHeight = '800px';
+            menu.style.display = 'flex';
+            
+            // Ensure menu content is scrollable
+            const content = menu.querySelector('.menu-content');
+            if (content) {
+                content.style.overflow = 'auto';
+                content.style.maxHeight = 'calc(100% - 120px)';
+            }
+            
+            // Make sure header is visible
+            const header = menu.querySelector('.menu-header');
+            if (header) {
+                header.style.flexShrink = '0';
+            }
         }
     },
 
@@ -1886,12 +2075,69 @@ const menuSystem = {
             const sc = document.getElementById('sum-chg');
             const sw = document.getElementById('sum-weight');
             const xpText = `${this.playerData.experience}/${this.playerData.experienceToNext}`;
-            if (lvl) lvl.textContent = `Lv ${this.playerData.level}`;
-            if (xp) xp.textContent = xpText;
-            if (si) si.textContent = `INT ${Math.round(s.integrity)}/${s.maxIntegrity}`;
-            if (sc) sc.textContent = `CHG ${Math.round(s.charge)}/${s.maxCharge}`;
-            if (sw) sw.textContent = `W ${this.playerData.weight.toFixed(0)}/${this.playerData.maxWeight}`;
+            if (lvl) lvl.textContent = `⭐ Lv ${this.playerData.level}`;
+            if (xp) xp.textContent = `📈 ${xpText}`;
+            if (si) si.textContent = `❤️ ${Math.round(s.integrity)}/${s.maxIntegrity}`;
+            if (sc) sc.textContent = `⚡ ${Math.round(s.charge)}/${s.maxCharge}`;
+            if (sw) sw.textContent = `📦 ${this.playerData.weight.toFixed(0)}/${this.playerData.maxWeight}`;
         } catch(_){}
+    },
+    
+    setupCraftSystem() {
+        // Setup craft item click handlers
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.craft-item')) {
+                const craftItem = e.target.closest('.craft-item');
+                const recipe = craftItem.dataset.recipe;
+                if (recipe) {
+                    this.craftItem(recipe);
+                }
+            }
+        });
+        
+        // Setup touch events for mobile
+        if (window.isMobile) {
+            document.addEventListener('touchstart', (e) => {
+                if (e.target.closest('.craft-item')) {
+                    e.preventDefault();
+                    const craftItem = e.target.closest('.craft-item');
+                    const recipe = craftItem.dataset.recipe;
+                    if (recipe) {
+                        this.craftItem(recipe);
+                    }
+                }
+            });
+        }
+    },
+    
+    craftItem(recipe) {
+        // Delegate to combat system if available
+        if (window.combatSystem && window.combatSystem.craftItem) {
+            window.combatSystem.craftItem(recipe);
+        } else {
+            this.showNotification(`Crafting ${recipe} - system not available`);
+        }
+    },
+    
+    setupFullscreenListeners() {
+        // Listen for fullscreen changes
+        const fullscreenEvents = [
+            'fullscreenchange',
+            'webkitfullscreenchange', 
+            'mozfullscreenchange',
+            'MSFullscreenChange'
+        ];
+        
+        fullscreenEvents.forEach(event => {
+            document.addEventListener(event, () => {
+                if (this.isOpen) {
+                    // Small delay to ensure fullscreen transition is complete
+                    setTimeout(() => {
+                        this.ensureFullscreenVisibility();
+                    }, 100);
+                }
+            });
+        });
     }
 };
 
