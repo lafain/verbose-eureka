@@ -2,8 +2,9 @@
 
 ## Server Information
 - **Remote Server IP**: 178.156.186.132
-- **Port**: 8080 (web port - use 80 in production with reverse proxy)
-- **Landing Page**: http://178.156.186.132:8080
+- **Port**: 80 (standard web port)
+- **Landing Page**: http://178.156.186.132
+- **Root Password**: jhcs2bkbH4uf75OP
 
 ## Deployment Instructions
 

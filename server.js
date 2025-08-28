@@ -8,7 +8,7 @@ const fs = require('fs');
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 const BUILD_TIME = new Date().toISOString();
 
 // Get local network IP
