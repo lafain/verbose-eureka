@@ -598,10 +598,25 @@ const menuSystem = {
             legacyMenuBtn.addEventListener('click', () => this.toggle());
         }
         
-        // Close button
+        // Fullscreen change event listener to ensure menu visibility
+        document.addEventListener('fullscreenchange', () => this.handleFullscreenChange());
+        document.addEventListener('webkitfullscreenchange', () => this.handleFullscreenChange());
+        document.addEventListener('mozfullscreenchange', () => this.handleFullscreenChange());
+        document.addEventListener('MSFullscreenChange', () => this.handleFullscreenChange());
+        
+        // Close button - ensure it works on mobile
         const closeBtn = document.querySelector('.menu-close');
         if (closeBtn) {
-            closeBtn.addEventListener('click', () => this.closeMenu());
+            closeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggle();
+            });
+            closeBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.toggle();
+            });
         }
         
         // Layer switching
@@ -1172,6 +1187,27 @@ const menuSystem = {
         if (menu) {
             menu.classList.toggle('hidden', !this.isOpen);
             
+            // Force display for mobile and fullscreen
+            if (this.isOpen) {
+                menu.style.display = 'flex';
+                menu.style.visibility = 'visible';
+                menu.style.opacity = '1';
+                
+                // Ensure menu is on top in fullscreen
+                if (document.fullscreenElement || document.webkitFullscreenElement || 
+                    document.mozFullScreenElement || document.msFullscreenElement) {
+                    menu.style.zIndex = '99999';
+                }
+            } else {
+                // Only hide if not in fullscreen, otherwise keep visible but mark as hidden
+                if (!(document.fullscreenElement || document.webkitFullscreenElement || 
+                      document.mozFullScreenElement || document.msFullscreenElement)) {
+                    menu.style.display = '';
+                    menu.style.visibility = '';
+                    menu.style.opacity = '';
+                }
+            }
+            
             // Handle map refresh
             if (this.isOpen && this.activeTab === 'map') {
                 this.startMapRefresh();
@@ -1195,6 +1231,20 @@ const menuSystem = {
         // Pause/resume game
         if (window.gameState) {
             window.gameState.paused = this.isOpen;
+        }
+    },
+
+    handleFullscreenChange() {
+        const menu = document.getElementById('gameMenu');
+        if (menu && this.isOpen) {
+            // Ensure menu stays visible and on top in fullscreen
+            if (document.fullscreenElement || document.webkitFullscreenElement || 
+                document.mozFullScreenElement || document.msFullscreenElement) {
+                menu.style.zIndex = '99999';
+                menu.style.display = 'flex';
+                menu.style.visibility = 'visible';
+                menu.style.opacity = '1';
+            }
         }
     },
 
